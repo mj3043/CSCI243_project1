@@ -1,0 +1,66 @@
+============================= ASSIGNMENT REPORT ============================
+Assignment name is: Wildfire
+My name is:         Munkh-Orgil Jargalsaikhan 
+
+	[USE PLAIN TEXT]
+	[INSERT ANSWERS AFTER EACH QUESTION AND ADD MORE LINES AS NEEDED.]
+	[MAKE YOUR ANSWERS SHORT AND TO THE POINT. BULLET POINTS ARE GOOD.]
+
+===== In what cases does the program run correctly?  =================
+- Works with all valid flags: -b1..100, -c1..100, -d1..100, -n0..100, -p0..10000, -s5..40
+- Default run (no args): 10×10 grid, 50% trees, 10% burning, 30% catch, 25% neighbor
+- Print mode (-pN): prints N+1 grids, stops early if fire dies
+- Overlay mode: smooth animation, 0.75s delay, "Fires are out." at end
+- Fire spreads to 8 neighbors, burns exactly 3 cycles: * * * .
+- Same output every run thanks to srandom(41) + Fisher-Yates shuffle
+- Invalid input: prints exact error + usage and quits
+
+===== In what cases does the program fail and how?  ==================
+- Bad values: -b0, -s3, -p-1 → shows correct error message + usage → exits
+- Non-numbers: -babc → treated as invalid → error + exit
+- No crashes or memory leaks — uses static arrays + small malloc in init
+
+===== If applicable, what were the extra credit results?  ============
+- No extra credit implemented
+
+===== If applicable, describe how to run the extra credit.  ==========
+- N/A
+
+===== How much time did I spend on the project?  =====================
+- About 17 hours total
+  - 3h planning + reading spec
+  - 5h core logic + fire spread
+  - 3h command-line parsing + errors
+  - 3h print/overlay modes
+  - 2h testing + fixing burn duration
+  - 1h docs + report
+
+===== What did I learn?  =============================================
+- How to use getopt() properly for CLI args
+- Cellular automata: how neighbor rules work
+- Must copy grid before update or fire spreads weirdly
+- ANSI cursor control with display.c is cool
+- Fixed seed (srandom(41)) makes testing easy
+- #define and static arrays keep code clean
+
+===== What was easy in this assignment?  =============================
+- Setting up the 2D grid with static arrays
+- Printing the grid with printf
+- Basic fire spread idea (if neighbor burning → maybe catch)
+
+===== What gave me problems or troubles?  ============================
+- Burn duration not exactly 3 cycles — needed burn_age[][] to track
+- Overlay flickering — fixed with set_cur_pos + put()
+- Neighbor % calculation had off-by-one bugs
+- Print header formatting with %02d
+- Forgetting srandom(41) → random output every run
+
+===== What would be the most important improvement for the project?  =
+- Add color in overlay mode: green=Y, red=*, gray=.
+
+===== What else would I have liked to do for this assignment?  =======
+- Save animation to file (-o output.txt)
+- Wind direction to bias fire spread
+- Pause/resume with spacebar in overlay
+
+============================================================================
