@@ -344,7 +344,6 @@ static void display_grid(void) {
         }
         if (print_mode) putchar('\n');
     }
-    if (print_mode) putchar('\n');
 }
 
 /**
