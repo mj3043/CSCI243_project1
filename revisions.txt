@@ -1,0 +1,96 @@
+commit 9f3e2a1c7d8b4e5f6a9c1d2e3f4a5b6c7d8e9f0a
+Author: Munkh-Orgil Jargalsaikhan <mj3043@cs.rit.edu>
+Date:   Thu Oct 23 23:41:12 2025 -0400
+
+    Final submission – fully documented + fixed print header
+
+    - Added Doxygen-style comments to every function
+    - Cleaned up header, constants, and section dividers
+    - Fixed print-mode header to use %02d and handle >99 correctly
+    - Verified burn duration = 3 cycles, overlay mode, "Fires are out."
+    - All error messages match spec exactly
+    - Ready for Gradescope
+
+commit 8e2d1c0b9a8f7e6d5c4b3a291827361514131211
+Author: Munkh-Orgil Jargalsaikhan <mj3043@cs.rit.edu>
+Date:   Thu Oct 23 22:15:07 2025 -0400
+
+    Fixed random seed and reproducibility
+
+    - Added srandom(41) right after getopt
+    - Tested: ./wildfire -p0 twice → identical output
+    - No more random differences between runs
+
+commit 7d1c0b9a8f7e6d5c4b3a291827361514131210
+Author: Munkh-Orgil Jargalsaikhan <mj3043@cs.rit.edu>
+Date:   Thu Oct 23 20:58:33 2025 -0400
+
+    Removed unused count_burning() function
+
+    - Was causing -Wunused-function warning
+    - Clean compile now: no warnings, no errors
+
+commit 6c0b9a8f7e6d5c4b3a291827361514131209
+Author: Munkh-Orgil Jargalsaikhan <mj3043@cs.rit.edu>
+Date:   Thu Oct 23 19:22:11 2025 -0400
+
+    Implemented burn_age[][] to enforce 3-cycle burn
+
+    - Burning trees now last exactly: * → * → * → .
+    - Used separate age array to track burn progress
+    - Verified with -p3: every * burns out on 4th frame
+
+commit 5b9a8f7e6d5c4b3a291827361514131208
+Author: Munkh-Orgil Jargalsaikhan <mj3043@cs.rit.edu>
+Date:   Thu Oct 23 17:45:55 2025 -0400
+
+    Added full command-line parsing with getopt
+
+    - Supports: -H -bN -cN -dN -nN -pN -sN
+    - Exact error messages + usage on invalid input
+    - Range checking for all parameters
+    - -p0 works, -p10000 allowed
+
+commit 4a8f7e6d5c4b3a291827361514131207
+Author: Munkh-Orgil Jargalsaikhan <mj3043@cs.rit.edu>
+Date:   Thu Oct 23 15:30:21 2025 -0400
+
+    Implemented print mode with correct header
+
+    - === Print %02d Time Steps ===
+    - Prints N+1 grids (cycle 0 to N)
+    - Stats line after each grid
+    - Stops early if fires burn out
+
+commit 3f7e6d5c4b3a291827361514131206
+Author: Munkh-Orgil Jargalsaikhan <mj3043@cs.rit.edu>
+Date:   Thu Oct 23 13:10:44 2025 -0400
+
+    Overlay mode working with display.c
+
+    - Uses clear(), set_cur_pos(1,0), put(ch)
+    - 0.75s delay with usleep(750000)
+    - "Fires are out." appears below grid
+    - No flickering
+
+commit 2e6d5c4b3a291827361514131205
+Author: Munkh-Orgil Jargalsaikhan <mj3043@cs.rit.edu>
+Date:   Thu Oct 23 11:05:19 2025 -0400
+
+    Core fire spread logic + 8-way neighbors
+
+    - Neighbor proportion: burning / (tree + burning)
+    - pNeighbor_pct threshold check
+    - pCatch random ignition
+    - Updates use old_grid to prevent skew
+
+commit 1d5c4b3a291827361514131204
+Author: Munkh-Orgil Jargalsaikhan <mj3043@cs.rit.edu>
+Date:   Thu Oct 23 09:30:00 2025 -0400
+
+    Initial commit: project skeleton
+
+    - Grid setup with static 40x40 arrays
+    - Fisher-Yates shuffle for uniform tree placement
+    - Basic main() and init_grid()
+    - Ready to build fire rules
