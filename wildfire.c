@@ -208,12 +208,6 @@ int main(int argc, char *argv[]) {
             break;
         }
         if (print_mode && steps >= print_limit) break;
-
-        if (!print_mode) {
-            usleep(SIM_DELAY_USEC);
-            set_cur_pos(sim_size + 4, 0);
-            printf("Fires are out.\n");
-        }
     }
 
     return EXIT_SUCCESS;
@@ -244,7 +238,7 @@ static void usage(void) {
  * @param msg The specific error text to display.
  */
 static void error_exit(const char *msg) {
-    fprintf(stderr, "%s\n", msg);
+    fprintf(stderr, "%s", msg);
     usage();
     exit(EXIT_FAILURE);
 }
