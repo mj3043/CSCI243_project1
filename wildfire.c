@@ -172,7 +172,7 @@ int main(int argc, char *argv[]) {
         printf("===========================\n");
         printf("======== Wildfire =========\n");
         printf("===========================\n");
-        printf("=== Print %02d Time Steps ===\n",
+        printf("=== Print %2d Time Steps ===\n",
                print_limit > 99 ? print_limit : print_limit);
         printf("===========================\n");
     } else {
@@ -209,7 +209,11 @@ int main(int argc, char *argv[]) {
         }
         if (print_mode && steps >= print_limit) break;
 
-        if (!print_mode) usleep(SIM_DELAY_USEC);
+        if (!print_mode) {
+            usleep(SIM_DELAY_USEC);
+            set_cur_pos(sim_size + 4, 0);
+            printf("Fires are out.\n");
+        }
     }
 
     return EXIT_SUCCESS;
@@ -232,7 +236,7 @@ static void usage(void) {
             " -dN # density: the proportion of trees in the grid. 0 < N < 101.\n"
             " -nN # proportion of neighbors that influence a tree catching fire. -1 < N < 101.\n"
             " -pN # number of states to print before quitting. -1 < N < ...\n"
-            " -sN # simulation grid size. 4 <  N < 41.\n");
+            " -sN # simulation grid size. 4 < N < 41.");
 }
 
 /**
@@ -357,8 +361,6 @@ static void display_stats(int cycle, int changes, int total_changes) {
            pNeighbor_pct / 100.0);
     printf("cycle %d, current changes %d, cumulative changes %d.\n",
            cycle, changes, total_changes);
-    if (changes == 0 && cycle > 0 && print_mode)
-        printf("Fires are out.\n");
 }
 
 /* ============================== SIMULATION UPDATE ============================== */
