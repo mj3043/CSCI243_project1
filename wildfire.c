@@ -19,6 +19,7 @@
  *   gcc -std=c99 -ggdb -Wall -Wextra -pedantic wildfire.c display.c -lm -o wildfire
  */
 
+ #define _POSIX_C_SOURCE 200809L
 #define _DEFAULT_SOURCE               /* for usleep() */
 #include <stdio.h>
 #include <stdlib.h>
@@ -203,8 +204,8 @@ int main(int argc, char *argv[]) {
             if (!print_mode) {
                 usleep(SIM_DELAY_USEC);
                 set_cur_pos(sim_size + 4, 0);
-                printf("Fires are out.\n");
             }
+            printf("Fires are out.\n");
             break;
         }
         if (print_mode && steps >= print_limit) break;
@@ -230,7 +231,7 @@ static void usage(void) {
             " -dN # density: the proportion of trees in the grid. 0 < N < 101.\n"
             " -nN # proportion of neighbors that influence a tree catching fire. -1 < N < 101.\n"
             " -pN # number of states to print before quitting. -1 < N < ...\n"
-            " -sN # simulation grid size. 4 < N < 41.");
+            " -sN # simulation grid size. 4 < N < 41.\n");
 }
 
 /**
@@ -238,7 +239,7 @@ static void usage(void) {
  * @param msg The specific error text to display.
  */
 static void error_exit(const char *msg) {
-    fprintf(stderr, "%s", msg);
+    fprintf(stderr, "%s\n", msg);
     usage();
     exit(EXIT_FAILURE);
 }
