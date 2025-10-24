@@ -223,7 +223,7 @@ static void usage(void) {
     fprintf(stderr,
             "usage: wildfire [options]\n"
             "By default, the simulation runs in overlay display mode.\n"
-            "The -pN option makes the simulation run in print mode for up to N states.\n\n"
+            "The -pN option makes the simulation run in print mode for up to N states.\n"
             "Simulation Configuration Options:\n"
             " -H  # View simulation options and quit.\n"
             " -bN # proportion of trees that are already burning. 0 < N < 101.\n"
