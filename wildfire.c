@@ -232,7 +232,9 @@ static void usage(void) {
             " -dN # density: the proportion of trees in the grid. 0 < N < 101.\n"
             " -nN # proportion of neighbors that influence a tree catching fire. -1 < N < 101.\n"
             " -pN # number of states to print before quitting. -1 < N < ...\n"
-            " -sN # simulation grid size. 4 < N < 41.\n");
+            " -sN # simulation grid size. 4 < N < 41.\n"
+            "\n"
+        );
 }
 
 /**
