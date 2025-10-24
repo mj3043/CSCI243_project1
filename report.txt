@@ -42,6 +42,7 @@ My name is:         Munkh-Orgil Jargalsaikhan
 - ANSI cursor control with display.c is cool
 - Fixed seed (srandom(41)) makes testing easy
 - #define and static arrays keep code clean
+- Handling small formatting differences can break tests
 
 ===== What was easy in this assignment?  =============================
 - Setting up the 2D grid with static arrays
@@ -49,11 +50,11 @@ My name is:         Munkh-Orgil Jargalsaikhan
 - Basic fire spread idea (if neighbor burning → maybe catch)
 
 ===== What gave me problems or troubles?  ============================
-- Burn duration not exactly 3 cycles — needed burn_age[][] to track
-- Overlay flickering — fixed with set_cur_pos + put()
-- Neighbor % calculation had off-by-one bugs
-- Print header formatting with %02d
-- Forgetting srandom(41) → random output every run
+- Usage message newline mismatch in stderr output
+- Burn duration tracking — needed burn_age[][]
+- Overlay flicker — fixed with set_cur_pos()
+- Variable typo (lighting_pct vs lightning_pct)
+- Getting test harness to pass exact format checks
 
 ===== What would be the most important improvement for the project?  =
 - Add color in overlay mode: green=Y, red=*, gray=.
